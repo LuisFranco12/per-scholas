@@ -1,3 +1,4 @@
 hello 
 this is just a test commit<br>
-another test
+another test<br>
+testing new git version
