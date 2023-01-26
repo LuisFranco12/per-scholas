@@ -1,0 +1,17 @@
+/* if(Math.random() < alien.accuracy) {
+
+            console.log('Miss!')
+            console.log('you have been hit')
+            alien.alienAttack()
+
+        }else if(alienHealth > 0){
+
+            console.log('Direct hit!')
+            console.log(`alien health: ${alienHealth}`)
+
+        }else if (alienHealth <= 0){
+
+            console.log('You win')
+            return 
+        }  
+*/
