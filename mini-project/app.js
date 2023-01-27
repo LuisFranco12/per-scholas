@@ -58,7 +58,8 @@ for (let alien of alienArray) {
     }
   }
   
-// outside the while loop but inside the for loop
+// the code below is outside the while loop but inside the for loop
+
   // if player health reaches 0 or below it's game over
   if (ussAssembly.hull <= 0) {
     break;
