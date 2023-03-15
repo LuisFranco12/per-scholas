@@ -7,7 +7,7 @@ const New = () => {
                     <label htmlFor="nme">Name:</label><br />
                     <input type="text" id="nme" name="name" /><br /><br />
 
-                    <label htmlFor="clr">Image Address:</label><br />
+                    <label htmlFor="img">Image Address:</label><br />
                     <input type="text" id="img" name='image' /><br /><br />
 
                     <button>Submit</button>
