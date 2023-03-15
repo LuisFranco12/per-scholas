@@ -13,12 +13,14 @@ const Index = (props) => {
                 {
                     props.pokemon.map((pokemon, index) => (
                         <li key={index}>
-                           <a href={`/pokemon/${index}`}>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</a>
+                           <a href={`/pokemon/${pokemon._id}`}>{pokemon.name[0].toUpperCase() + pokemon.name.slice(1)}</a>
                         </li>
                         
                     ))
                 }
             </ul>
+            <br />
+            <a href="/pokemon/new">Add New Pokemon</a>
         </> 
      );
 }
