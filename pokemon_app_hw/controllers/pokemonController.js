@@ -18,14 +18,12 @@ module.exports.new = function(req, res) {
 
 module.exports.create = async function(req, res) {
     try {
-        // use the model to interact with db and create a new document in the fruit collection
       await Pokemon.create(req.body)
     } catch(err) {
         console.log('error')
         res.send(err.message)
     }
 
-    // fruits.push(req.body)
     res.redirect('/pokemon')
 }
 
