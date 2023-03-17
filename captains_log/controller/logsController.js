@@ -58,7 +58,10 @@ module.exports.edit = async (req, res) => {
 
 module.exports.show = async (req, res) => {
     const log = await Logs.findById(req.params.id)
-    let date = log.createdAt.toString().slice(0, 24)
-    res.render('Show', { log: log, date: date })
+    let date = log.createdAt
+        .toString()
+        .slice(0, 15)
+    console.log(date)
+    res.render('Show', { log: log, date})
     console.log()
 }
