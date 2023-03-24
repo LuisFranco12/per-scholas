@@ -1,9 +1,10 @@
 import React from 'react'
+import DefaultLayout from './layout/DefaultLayout';
 import Navbar from './layout/Navbar'
-
 const New = (props) => {
     return ( 
-    <>
+    <DefaultLayout>
+        <>
         <Navbar />
         <div>
             <h1>Create A Flight</h1>
@@ -40,6 +41,7 @@ const New = (props) => {
                 </form>
         </div>
     </>
+    </DefaultLayout>
      );
 }
  

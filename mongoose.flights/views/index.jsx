@@ -1,8 +1,10 @@
 import React from 'react'
+import DefaultLayout from './layout/DefaultLayout'
 import Navbar from './layout/Navbar'
 function Index(props) {
     return (
-        <>
+        <DefaultLayout>
+            <>
             <Navbar />
             <div>
                 <h1>Index View</h1>
@@ -35,6 +37,7 @@ function Index(props) {
                 </div>
             </div>
         </>
+        </DefaultLayout>
     )
 }
 

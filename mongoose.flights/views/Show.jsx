@@ -1,6 +1,6 @@
 import React from 'react'
-import { options } from '../routes/flightRoutes';
-
+import Navbar from './layout/Navbar';
+import DefaultLayout from './layout/DefaultLayout';
 const Show = (props) => {
 
     let choices = [
@@ -9,69 +9,75 @@ const Show = (props) => {
         "DAL",
         "LAX",
         "SEA"
-      ];
-      let index
-      props.flight.destinations.map(item => {
+    ];
+    let index
+    props.flight.destinations.map(item => {
         index = choices.findIndex(choice => choice.includes(item.airport))
         choices.splice(index, 1)
     })
     return ( 
-        <div>
-            <h1>
-                {props.flight.airline}
-            </h1>
-            <p>
-                flights: {props.flight.flights}
-            </p>
-            <p>
-                departs: {props.flight.departsDate}
-            </p>
-            <p>
-                airport: {props.flight.airport}
-            </p>
+        <DefaultLayout>
+            <Navbar />
 
-            <form action={`/flights/${props.flight._id}/destinations`} method="POST">
-                <label htmlFor="date">Time of Arrival:</label> <br />
-                <input type="datetime-local" id="date" name="arrival" value={props.departsDate} /><br /><br />
+            <div className='show-container'>
+            <div className='flight-info'>
+                <h1>
+                    {props.flight.airline}
+                </h1>
+                <p>
+                    flights: {props.flight.flights}
+                </p>
+                <p>
+                    departs: {props.flight.departs.toString()}
+                </p>
+                <p>
+                    airport: {props.flight.airport}
+                </p>
+            </div>
+
+            <form className='destination-form' action={`/flights/${props.flight._id}/destinations`} method="POST">
                 {
                     choices.length ?
                     <>
-                        <label htmlFor="airport">Airport:</label><br />
+                        <label htmlFor="date">Time of Arrival:</label>
+                        <input type="datetime-local" id="date" name="arrival" value={props.departsDate} /><br /><br />
+                        <label htmlFor="airport">Airport:</label>
                         <select style={{width: "80px"}} name="airport">
                             {
                                 choices.map(item => (
                                 <option>{item}</option>
                                 ))
                             } 
-                        </select><br /><br />
-                        <button>Add</button> <br /> <br />
+                        </select>
+                        <button>Add</button>
                     </>
                     : ''
                 }
-            </form>
+                </form>
 
-            {
-                        props.flight.destinations.length ?
-                        <>
-                            <div style={{textDecoration: 'underline'}}>Destinations:</div>
-                            <p style={{margin: 0}}>{props.flight.destinations.map((item, i) => {
-                               return  <div key={i}>
-                                    <div>{item.airport}</div>
-                                    <div>{item.arrival.toString()}</div>
-                                    <br />
-                                </div>
-                            }
-                            )}</p>
-                        </>
-                        : ''
-                }
+                {
+                            props.flight.destinations.length ?
+                            <div className='destinations'>
+                                <div style={{textDecoration: 'underline'}}>Destinations:</div> <br />
+                                <p style={{margin: 0}}>{props.flight.destinations.map((item, i) => {
+                                return  <div key={i}>
+                                        <div>{item.airport}</div>
+                                        <div>{item.arrival.toString()}</div>
+                                        <br />
+                                    </div>
+                                }
+                                )}</p>
+                            </div>
+                            : ''
+                    }
 
-            <form action={`/flights/${props.flight._id}?_method=DELETE`} method="POST">
-                <button>Delete</button>
-            </form>
-           
-           <a href="/flights">back</a>
-        </div>
+                <form action={`/flights/${props.flight._id}?_method=DELETE`} method="POST">
+                    <button>Delete</button>
+                </form>
+            
+            <a href="/flights">back</a>
+            </div>
+        </DefaultLayout>
      );
 }
  

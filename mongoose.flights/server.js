@@ -23,6 +23,8 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(methodOverride('_method'))
 
+app.use(express.static('public'))
+
 app.use('/flights', routes)
 
 app.listen(PORT, ()=> {
